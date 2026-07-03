@@ -24,7 +24,7 @@ void solve() {
     int ans = 0;
     int currentSum = 0;
     for (int i = 1; i <= n; ++i) {
-        while (j + 1 <= n && a[j + 1].first - a[i].first <= d) {
+        while (j + 1 <= n && a[j + 1].first - a[i].first < d) {
             ++j;
             currentSum += a[j].second;
         }
