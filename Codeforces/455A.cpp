@@ -9,6 +9,7 @@ using namespace        std;
 typedef pair<int, int> ii;
 
 const int       N      = 1e6 + 7;
+const int       maxA   = 1e5 + 2000;
 const long long INF     = 1e18 + 7;
 const long long MOD    = 1e9 + 7;
 
@@ -49,19 +50,19 @@ void solve() {
     }
 
     sort(a + 1, a + 1 + n, greater<int>());
-    vector<bool>mark(n + 1, 0);
+    vector<bool>mark(maxA + 1, 0);
 
     for (int i = 1; i <= n; ++i) {
         if (!mark[a[i]]) {
-            dp[a[i]] += get(1,1,n,a[i] + 2, n) + a[i];
+            dp[a[i]] += get(1,1,maxA,a[i] + 2, maxA) + a[i];
         } else {
             dp[a[i]] += a[i];
         }
         mark[a[i]] = 1;
-        update(1,1,n,a[i],dp[a[i]]);
+        update(1,1,maxA,a[i],dp[a[i]]);
     }
 
-    cout << *max_element(dp + 1, dp + 1 + n);
+    cout << *max_element(dp + 1, dp + 1 + maxA);
 }   
 
 #define TASK "test"
